@@ -9,10 +9,10 @@ import {
 
 // ------------------------------- imports ------------------------ imports --------------------------------- imports ------------
 
-const MenuItem = ({ height, imageUrl, item, price }) => {
+const MenuItem = ({ height, imageUrl, item, price, marginLeft }) => {
   return (
-    <MenuItemContainer style={{ height: height }}>
-      <BackgroundImage source={imageUrl} imageStyle={{ borderRadius: 20 }}>
+    <MenuItemContainer style={{ height: height, marginLeft: marginLeft, marginBottom: 18 }}>
+      <BackgroundImage source={imageUrl} imageStyle={{ borderRadius: 20, alignSelf: "stretch" }}>
         <ItemButton>
           <Text style={{ color: "rgba(0, 0, 0, .6)" }}>{item}</Text>
           <Text style={{ fontSize: 16 }}>{price}</Text>

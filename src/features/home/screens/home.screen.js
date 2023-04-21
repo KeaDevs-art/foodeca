@@ -12,32 +12,28 @@ import ImgSalad from "../../../../assets/health-things.png";
 import { SafeArea } from "../../../utils/safe-area.component";
 import { HeadingPrimary } from "../../../typography/heading-primary/heading-primary.component";
 import { SearchBar } from "../../../components/searchbar/searchbar.component";
-import { HomeScreen, Header, Search, Menu, MenuList } from "./home.styles";
+import { HomeScreen, Header, Search, MenuList } from "./home.styles";
 
 // ------------------------------ imports ----------------------------- imports -------------------------------- imports ----------
 
 const Home = () => {
   const MENU_DATA = [
     {
-      height: "40%",
       imageUrl: ImgNoodle,
       item: "Noodle",
       price: "$18",
     },
     {
-      height: "40%",
       imageUrl: ImgTaco,
       item: "Taco",
       price: "$10",
     },
     {
-      height: "40%",
       imageUrl: ImgPizza,
       item: "Pizza",
       price: "$48",
     },
     {
-      height: "40%",
       imageUrl: ImgSalad,
       item: "Salad",
       price: "$25",
@@ -63,71 +59,27 @@ const Home = () => {
           </HeadingPrimary>
           <SearchBar />
         </Search>
-        <Menu>
-          <MenuItem
-            height="64%"
-            imageUrl={ImgNoodle}
-            item="Sushi"
-            price="$18"
-          />
-          <MenuItem height="64%" imageUrl={ImgTaco} item="Taco" price="$10" />
-          {/* <MenuItem height="60%" imageUrl={ImgPizza} item="Pizza" price="$48" />
-          <MenuItem height="60%" imageUrl={ImgSalad} item="Veggy" price="$25" /> */}
-        </Menu>
+        <MenuList
+          keyExtractor={(item) => `${item.id}_${item.item}`}
+          numColumns={2}
+          contentContainerStyle={{
+            alignItems: "center",
+            alignSelf: "stretch",
+          }}
+          data={MENU_DATA}
+          renderItem={({ item, index }) => (
+            <MenuItem
+              height={index % 2 == 0 ? 200 : 165}
+              marginLeft={index % 2 !== 0 ? 14 : 0}
+              imageUrl={item.imageUrl}
+              item={item.item}
+              price={item.price}
+            />
+          )}
+        />
       </HomeScreen>
     </SafeArea>
   );
 };
 
 export default Home;
-
-{
-  /* {menuItems.map(({ height, imageUrl, item, price }) => (
-          <MenuItem
-            key={item}
-            height={height}
-            imageUrl={imageUrl}
-            item={item}
-            price={price}
-          />
-        ))}
-
-        <Menu>
-          <MenuItem height="60%" imageUrl={ImgNoodle} item="Sushi" price="$18" />
-          <MenuItem height="60%" imageUrl={ImgTaco} item="Taco" price="$10" />
-        </Menu>
-
-        <MenuList
-          data={MENU_DATA}
-          renderItem={({ menuItem }) => {
-            console.log(menuItem);
-
-            return (
-              <MenuItem
-              height={menuItem.height}
-              imageUrl={menuItem.imageUrl}
-              item={menuItem.item}
-              price={menuItem.price}
-            />
-            )
-          }}
-        />
-        
-        <RestaurantList
-        data={restaurants}
-        renderItem={({ item }) => {
-          return (
-            <TouchableOpacity
-              onPress={() =>
-                navigation.navigate("RestaurantDetail", { restaurant: item })
-              }
-            >
-              <Spacer position="bottom" size="large">
-                <RestaurantInfoCard restaurant={item} />
-              </Spacer>
-            </TouchableOpacity>
-          );
-        }}
-        keyExtractor={(item) => item.name}
-      />*/
-}

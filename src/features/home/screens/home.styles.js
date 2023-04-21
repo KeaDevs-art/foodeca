@@ -1,8 +1,8 @@
 import { FlatList } from "react-native";
 import styled from "styled-components/native";
+import MasonryList from "@react-native-seoul/masonry-list";
 
 export const HomeScreen = styled.View`
-  flex: 1;
   padding: ${(props) => props.theme.space[4]};
 `;
 
@@ -16,12 +16,9 @@ export const Header = styled.View`
 export const Search = styled.View`
 `;
 
-export const Menu = styled.View`
-  flex: 1;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-between;
-`;
-
-export const MenuList = styled(FlatList)`
-`;
+export const MenuList = styled(FlatList)``;
+/*
+export const MenuList = styled(FlatList).attrs({
+  contentContainerStyle: {},
+})``;
+*/

@@ -1,7 +1,7 @@
 import styled from "styled-components/native";
 
 export const MenuItemContainer = styled.View`
-  width: 48%;
+  width: 148px;
 `;
 
 export const ItemButton = styled.TouchableOpacity`
